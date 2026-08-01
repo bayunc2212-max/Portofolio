@@ -862,14 +862,13 @@
             </div>
           </div>
 
-          <!-- Tambahan: kartu untuk menambahkan proyek baru -->
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <!--  menambahkan proyek baru -->
+          <!-- <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="card add-project-card h-100" id="addProjectCard">
               <div>
                 <span class="ap-eyebrow">// Tambah Modul</span>
                 <p class="ap-desc mt-1">
-                  Punya proyek baru? Masukkan di sini — kartunya akan otomatis
-                  tampil di grid seperti proyek lainnya.
+                 Tambah Proyek
                 </p>
               </div>
               <button
@@ -926,7 +925,7 @@
                 </div>
               </form>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -1057,7 +1056,7 @@
         </div>
 
         <small class="footer-copy">
-          © 2025 Bayu Kharisma Ramadhan — All Rights Reserved.
+           © <span id="year"></span> Bayu Kharisma Ramadhan — All Rights Reserved.
         </small>
       </div>
     </footer>
@@ -1218,6 +1217,8 @@
           if (e.key === "Escape") closeLightbox();
         });
       })();
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+    
   </body>
 </html>
