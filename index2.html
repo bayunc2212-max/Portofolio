@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bayu | Web Developer & IT Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio Web Developer dan IT Support – PHP, MySQL, troubleshooting hardware & software."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="bootstrap-icons.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet" />
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+     
+      :root{
+        --paper:#F6F5F0;
+        --paper-2:#ECEAE2;
+        --navy:#0B2545;
+        --navy-2:#12335F;
+        --ink:#1B2430;
+        --muted:#5B6B85;
+        --line:#D9D6CB;
+        --accent:#2F6FED;
+        --accent-soft:#E7EEFD;
+        --amber:#C97A2B;
+        --ok:#2E7D5B;
+        --mono:'IBM Plex Mono', ui-monospace, monospace;
+        --display:'Space Grotesk', 'Inter', sans-serif;
+        --sans:'IBM Plex Sans', 'Inter', sans-serif;
+      }
+
+      *{box-sizing:border-box;}
+      html{scroll-behavior:smooth;}
+
+      body{
+        background:var(--paper) !important;
+        color:var(--ink) !important;
+        font-family:var(--sans) !important;
+        font-size:16px;
+        line-height:1.65;
+        position:relative;
+      }
+
+    
+      body::before{
+        content:"";
+        position:fixed;
+        inset:0;
+        pointer-events:none;
+        z-index:0;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size:64px 64px;
+        opacity:.35;
+      }
+
+      h1,h2,h3,h4,h5,h6{
+        font-family:var(--display) !important;
+        color:var(--navy);
+        letter-spacing:-0.01em;
+      }
+
+      a{color:var(--accent);}
+      a:hover{color:var(--navy);}
+
+      .text-primary{color:var(--accent) !important;}
+      .text-muted{color:var(--muted) !important;}
+      .text-soft{color:var(--muted) !important;}
+
+      hr{border-top:2px solid var(--accent) !important;opacity:1;}
+
+      /* ---------- LAYOUT / SPINE ---------- */
+      .section{
+        position:relative;
+        padding:6rem 0 6rem 0;
+        z-index:1;
+      }
+      .section.soft{background:var(--paper-2);}
+
+      .section .container{
+        position:relative;
+        padding-left:3.25rem;
+      }
+
+      
+      .section .container::before{
+        content:"";
+        position:absolute;
+        left:0;
+        top:.5rem;
+        bottom:.5rem;
+        width:1px;
+        background:var(--line);
+      }
+      .section .container::after{
+        content:"";
+        position:absolute;
+        left:-3px;
+        top:.5rem;
+        width:7px;
+        height:7px;
+        border-radius:50%;
+        background:var(--accent);
+      }
+
+      #about .container::before{ content:none; }
+      #about .container::after{ content:none; }
+
+      .section > .container > h2{
+        display:flex;
+        align-items:center;
+        gap:.75rem;
+        font-size:1.9rem;
+        font-weight:700;
+      }
+      .section > .container > h2::before{
+        font-family:var(--mono);
+        font-size:.72rem;
+        font-weight:500;
+        letter-spacing:.14em;
+        color:var(--accent);
+        background:var(--accent-soft);
+        border:1px solid var(--accent);
+        padding:.2rem .5rem;
+        border-radius:2px;
+        white-space:nowrap;
+      }
+      #about > .container > h2::before{ content:"// 01 · PROFIL"; }
+      #skill > .container > h2::before{ content:"// 02 · KOMPETENSI"; }
+      #Proyek > .container > h2::before{ content:"// 03 · PROYEK"; }
+      #sertifikat > .container > h2::before{ content:"// 04 · SERTIFIKAT"; }
+      .section.soft:not(#about) > .container > h2:not(#skill *):not(#Proyek *):not(#sertifikat *)::before{
+        content:"// 01B · PENDEKATAN";
+      }
+
+      /* ---------- HEADER / NAV ---------- */
+      .header{
+        background:var(--navy) !important;
+        border-right:1px solid rgba(255,255,255,.08);
+      }
+      .header .logo,
+      .header-toggle{ color:#fff; }
+
+      .navmenu ul{padding:0;margin:0;list-style:none;}
+      #navmenu ul{gap:0 !important;}
+      #navmenu ul li{margin:0 !important;}
+      #navmenu ul li:last-child{margin-top:.5rem !important;}
+      .navmenu a{
+        display:flex;
+        align-items:center;
+        gap:.6rem;
+        font-family:var(--mono);
+        font-size:.78rem;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        color:rgba(255,255,255,.6) !important;
+        padding:.85rem 1.4rem;
+        border-left:1px solid transparent;
+        transition:.2s ease;
+      }
+      #navmenu ul a{padding:.55rem 1.3rem !important;}
+      .navmenu a:hover{
+        color:#fff !important;
+        background:rgba(255,255,255,.04);
+      }
+      .navmenu a.active{
+        color:#fff !important;
+        border-left:2px solid var(--accent);
+        background:rgba(47,111,237,.14);
+      }
+      .navicon{font-size:.9rem;}
+      
+
+      /* ---------- HERO ---------- */
+      #home{
+        min-height:92vh;
+        display:flex;
+        align-items:center;
+        padding-top:4rem;
+      }
+      #home .container{padding-left:3.25rem;}
+      #home .container::before,
+      #home .container::after{content:none;}
+
+      #home h1{
+        font-size:clamp(2.2rem, 4vw, 3.2rem);
+        font-weight:700;
+      }
+      #home h2{
+        font-family:var(--sans) !important;
+        font-size:1.15rem;
+        color:var(--muted) !important;
+      }
+
+      /*  foto profil */
+      .hero-identity{
+        display:flex;
+        align-items:center;
+        gap:1.5rem;
+        flex-wrap:wrap;
+      }
+      .profile-photo{
+        position:relative;
+        width:100px;
+        height:100px;
+        flex-shrink:0;
+        border-radius:50%;
+        border:2px solid var(--accent);
+        overflow:hidden;
+        background:var(--navy);
+      }
+      .profile-photo img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+      }
+      .profile-photo.empty img{display:none;}
+      .profile-photo-fallback{
+        display:none;
+        position:absolute;
+        inset:0;
+        align-items:center;
+        justify-content:center;
+        color:#8fa3c9;
+        font-size:2rem;
+      }
+      .profile-photo.empty .profile-photo-fallback{display:flex;}
+      @media (max-width: 576px){
+        .profile-photo{width:80px;height:80px;}
+      }
+
+      .btn{
+        border-radius:3px !important;
+        font-family:var(--mono);
+        font-size:.82rem;
+        letter-spacing:.06em;
+        text-transform:uppercase;
+        padding:.65rem 1.4rem;
+      }
+      .btn-primary{
+        background:var(--navy) !important;
+        border-color:var(--navy) !important;
+      }
+      .btn-primary:hover{
+        background:var(--accent) !important;
+        border-color:var(--accent) !important;
+      }
+      .btn-outline-primary{
+        color:var(--navy) !important;
+        border-color:var(--navy) !important;
+      }
+      .btn-outline-primary:hover{
+        background:var(--navy) !important;
+        color:#fff !important;
+      }
+
+      /* panel diagnostik di sisi hero — elemen signature */
+      .diag-panel{
+        margin-top:2.75rem;
+        max-width:440px;
+        background:var(--navy);
+        color:#dfe6f5;
+        border-radius:4px;
+        padding:1.25rem 1.4rem;
+        font-family:var(--mono);
+        font-size:.82rem;
+        box-shadow:0 18px 40px -20px rgba(11,37,69,.5);
+      }
+      .diag-panel .diag-head{
+        display:flex;
+        justify-content:space-between;
+        color:#8fa3c9;
+        border-bottom:1px solid rgba(255,255,255,.12);
+        padding-bottom:.6rem;
+        margin-bottom:.6rem;
+        letter-spacing:.08em;
+      }
+      .diag-panel .diag-line{
+        display:flex;
+        justify-content:space-between;
+        padding:.28rem 0;
+      }
+      .diag-panel .ok{color:#8fe3b0;}
+
+      /* ---------- CARDS (schematic bracket) ---------- */
+      .card{
+        background:#fff;
+        border:1px solid var(--line) !important;
+        border-radius:3px !important;
+        padding:1.6rem 1.5rem;
+        position:relative;
+        box-shadow:none !important;
+      }
+      .card::before,
+      .card::after{
+        content:"";
+        position:absolute;
+        width:14px;
+        height:14px;
+        border-color:var(--accent);
+        border-style:solid;
+      }
+      .card::before{
+        top:-1px;left:-1px;
+        border-width:2px 0 0 2px;
+      }
+      .card::after{
+        bottom:-1px;right:-1px;
+        border-width:0 2px 2px 0;
+      }
+
+      .card h5,
+      .card h6{
+        font-weight:700;
+        margin-bottom:.5rem;
+      }
+      .card p{color:var(--muted);margin-bottom:0;}
+
+      .jskil{
+        display:inline-block;
+        font-family:var(--mono);
+        font-size:.72rem;
+        letter-spacing:.1em;
+        text-transform:uppercase;
+        color:var(--accent);
+        background:var(--accent-soft);
+        border:1px solid var(--accent);
+        padding:.2rem .55rem;
+        border-radius:2px;
+        margin-bottom:.6rem;
+      }
+
+      .badge{
+        font-family:var(--mono) !important;
+        font-weight:500 !important;
+        letter-spacing:.04em;
+        border-radius:2px !important;
+        padding:.32em .55em !important;
+      }
+      .bg-primary{background:var(--accent) !important;}
+      .bg-secondary{background:var(--navy-2) !important;}
+      .bg-dark{background:var(--ink) !important;}
+
+      /* ---------- PROYEK: form tambah proyek ---------- */
+      .add-project-card{
+        border:1.5px dashed var(--accent) !important;
+        background:var(--accent-soft);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:.75rem;
+      }
+      .add-project-card::before,
+      .add-project-card::after{ border-color:var(--navy); }
+
+      .add-project-card .ap-eyebrow{
+        font-family:var(--mono);
+        font-size:.72rem;
+        letter-spacing:.12em;
+        text-transform:uppercase;
+        color:var(--navy);
+      }
+      .add-project-card p.ap-desc{
+        color:var(--muted);
+        font-size:.9rem;
+        margin-bottom:0;
+      }
+
+      .ap-form{
+        display:none;
+        flex-direction:column;
+        gap:.6rem;
+        margin-top:.4rem;
+      }
+      .ap-form.open{display:flex;}
+      .ap-form input,
+      .ap-form textarea{
+        font-family:var(--sans);
+        font-size:.88rem;
+        border:1px solid var(--line);
+        border-radius:2px;
+        padding:.5rem .6rem;
+        background:#fff;
+      }
+      .ap-form textarea{resize:vertical;min-height:64px;}
+      .ap-form .ap-actions{
+        display:flex;
+        gap:.5rem;
+        margin-top:.2rem;
+      }
+      .ap-empty-hint{
+        font-family:var(--mono);
+        font-size:.72rem;
+        color:var(--accent);
+      }
+
+      .proj-card-new{border-color:var(--accent) !important;}
+      .proj-card-new .proj-remove{
+        border:none;
+        background:none;
+        font-family:var(--mono);
+        font-size:.7rem;
+        color:var(--muted);
+        letter-spacing:.06em;
+        text-transform:uppercase;
+        padding:0;
+        margin-top:.6rem;
+      }
+      .proj-card-new .proj-remove:hover{color:#B3261E;}
+
+      /* ---------- BUKTI PROYEK: thumbnail + link demo/source ---------- */
+      .card.has-proof{padding-top:0;overflow:hidden;}
+      .proj-thumb{
+        position:relative;
+        margin:0 -1.5rem 1rem -1.5rem;
+        aspect-ratio:16/9;
+        background:var(--navy);
+        overflow:hidden;
+        cursor:zoom-in;
+        border-bottom:1px solid var(--line);
+      }
+      .proj-thumb img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+      }
+      .proj-thumb.empty img{display:none;}
+      .proj-thumb .proj-thumb-fallback{
+        display:none;
+        position:absolute;
+        inset:0;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:.4rem;
+        color:#8fa3c9;
+        font-family:var(--mono);
+        font-size:.68rem;
+        letter-spacing:.06em;
+        text-transform:uppercase;
+        text-align:center;
+        padding:0 1rem;
+        background:
+          repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 10px),
+          var(--navy);
+      }
+      .proj-thumb.empty .proj-thumb-fallback{display:flex;}
+      .proj-thumb .proj-thumb-fallback i{font-size:1.4rem;color:var(--accent);}
+
+      .proj-links{
+        display:flex;
+        gap:.5rem;
+        margin-top:.8rem;
+        flex-wrap:wrap;
+      }
+      .proj-links a{
+        display:inline-flex;
+        align-items:center;
+        gap:.35rem;
+        font-family:var(--mono);
+        font-size:.72rem;
+        letter-spacing:.05em;
+        text-transform:uppercase;
+        border:1px solid var(--navy);
+        color:var(--navy) !important;
+        padding:.35rem .65rem;
+        border-radius:2px;
+        transition:.2s ease;
+      }
+      .proj-links a:hover{background:var(--navy);color:#fff !important;}
+      .proj-links a.disabled{
+        opacity:.4;
+        pointer-events:none;
+        border-style:dashed;
+      }
+
+      /* lightbox untuk preview screenshot */
+      .lightbox-overlay{
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(11,37,69,.88);
+        z-index:2000;
+        align-items:center;
+        justify-content:center;
+        padding:2rem;
+        cursor:zoom-out;
+      }
+      .lightbox-overlay.open{display:flex;}
+      .lightbox-overlay img{
+        max-width:min(900px, 92vw);
+        max-height:88vh;
+        border-radius:4px;
+        box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+      }
+      .lightbox-overlay .lightbox-close{
+        position:absolute;
+        top:1.5rem;right:1.5rem;
+        color:#fff;
+        font-family:var(--mono);
+        font-size:.8rem;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        background:none;
+        border:1px solid rgba(255,255,255,.4);
+        padding:.4rem .8rem;
+        border-radius:2px;
+      }
+
+      /* ---------- FOOTER ---------- */
+      .footer{
+        background:var(--navy) !important;
+        color:#dfe6f5 !important;
+      }
+      .footer-name{color:#fff !important;font-family:var(--display);}
+      .footer-role{color:#8fa3c9 !important;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;}
+      .footer-contact a{color:#dfe6f5 !important;}
+      .footer-contact a:hover{color:var(--accent) !important;}
+      .footer-copy{color:#7488ad !important;font-family:var(--mono);font-size:.72rem;}
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-width: 1200px){
+        .header{
+          position:relative !important;
+          width:100% !important;
+          height:auto !important;
+          padding:0 !important;
+        }
+        .navmenu{
+          display:block;
+        }
+        .navmenu ul{
+          display:flex;
+          overflow-x:auto;
+          flex-wrap:nowrap;
+        }
+        .navmenu a{padding:.9rem 1rem;white-space:nowrap;}
+        .header-toggle{display:none !important;}
+        #home{padding-top:2rem;min-height:auto;}
+      }
+
+      @media (max-width: 768px){
+        .section .container{padding-left:1.75rem;}
+        .section > .container > h2{flex-direction:column;align-items:flex-start;gap:.4rem;}
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        *{animation:none !important;transition:none !important;}
+      }
+
+     
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible{
+        outline:2px solid var(--accent);
+        outline-offset:2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header
+      id="header"
+      class="header d-flex flex-column justify-content-center"
+    >
+      <i class="header-toggle d-xl-none bi bi-list"></i>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li>
+            <a href="#home" class="active"
+              ><i class="bi bi-house me-1 navicon"></i><span>Home</span></a
+            >
+          </li>
+          <li>
+            <a href="#about"
+              ><i class="bi bi-person me-1 navicon"></i><span>About</span></a
+            >
+          </li>
+          <li>
+            <a href="#skill"
+              ><i class="bi bi-cpu me-1 navicon"></i><span>Skills</span></a
+            >
+          </li>
+          <li>
+            <a href="#Proyek"
+              ><i class="bi bi-hdd-stack me-1 navicon"></i
+              ><span>Projects</span></a
+            >
+          </li>
+          <li>
+            <a href="#sertifikat"
+              ><i class="bi bi-award navicon"></i><span>Sertifikat</span></a
+            >
+          </li>
+          <li>
+            <a href="#kontak"
+              ><i class="bi bi-envelope me-1 navicon"></i
+              ><span>Contact</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="section" id="home">
+      <div class="container" data-aos="fade-up">
+        <div class="hero-identity">
+          <div class="profile-photo" id="profilePhotoBox">
+            <img
+              src="Foto_Bayu Kharisma Ramadhan.jpg"
+              alt="Foto Bayu Kharisma Ramadhan"
+              onerror="this.parentElement.classList.add('empty')"
+            />
+            <div class="profile-photo-fallback"><i class="bi bi-person"></i></div>
+          </div>
+          <div>
+            <h1 class="mb-2">Bayu Kharisma Ramadhan</h1>
+
+            <h2 class="fw-semibold text-primary">
+              Web Developer & Technical Support Engineer
+            </h2>
+          </div>
+        </div>
+        <hr class="my-4" style="width: 70px; border-top: 2px solid #2563eb" />
+
+        <p class="fs-5 col-md-8 mt-3 text-soft">
+          Fokus membangun sistem web yang rapi, stabil, dan siap digunakan,
+          serta menangani troubleshooting hardware dan software di lingkungan
+          kerja nyata.
+        </p>
+
+        <a
+          href="CV-Bayu Kharisma Ramadhan.pdf"
+          class="btn btn-primary btn-lg mt-4"
+            rel="noopener noreferrer"
+          target="_blank"   
+        >
+          Lihat CV
+        </a>
+        <a href="#Proyek" class="btn btn-outline-primary btn-lg mt-4 ms-2">
+          Lihat Proyek
+        </a>
+
+  
+        <div class="diag-panel" data-aos="fade-up" data-aos-delay="150">
+          <div class="diag-head"><span>SYSTEM CHECK</span><span>STATUS</span></div>
+          <div class="diag-line"><span>Frontend React.js + Tailwind</span><span class="ok">OK</span></div>
+          <div class="diag-line"><span>Backend Node.js, Express.js, Mysql2</span><span class="ok">OK</span></div>
+          <div class="diag-line"><span>Software support</span><span class="ok">OK</span></div>
+          <div class="diag-line"><span>Hardware support</span><span class="ok">OK</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section soft" id="about">
+      <div class="container" data-aos="fade-up">
+        <h2 class="mb-4">Tentang Saya</h2>
+
+        <p class="fs-5 col-md-9">
+         Saya merupakan lulusan <strong>Sistem Komputer </strong>yang berfokus pada pengembangan aplikasi web modern dan solusi teknologi. Menggunakan <strong>React, TypeScript, Tailwind CSS, Node.js, dan Express.js</strong> untuk membangun aplikasi yang cepat, responsif, dan mudah dipelihara. Selain pengembangan web, saya juga memiliki kemampuan dalam technical support, meliputi instalasi sistem operasi, konfigurasi perangkat, serta troubleshooting <strong>hardware dan software</strong>. Saya senang menciptakan solusi yang stabil, efisien, dan memberikan pengalaman terbaik bagi pengguna.
+        </p>
+
+        <p class="fs-5 col-md-9">
+          Saya bekerja dengan pendekatan yang terukur dan bertanggung jawab,
+          memastikan setiap solusi tidak hanya berjalan secara teknis, tetapi
+          juga stabil, efisien, dan siap digunakan di lingkungan kerja
+          sebenarnya.
+        </p>
+
+        <p class="fs-6 text-muted mt-4">
+          Pendekatan kerja tersebut tercermin dalam nilai-nilai berikut:
+        </p>
+      </div>
+    </section>
+
+    <!-- VALUE -->
+    <section class="section soft">
+      <div class="container">
+        <h2 class="mb-5" data-aos="fade-up">Pendekatan Kerja</h2>
+
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="card h-100">
+              <h5>Sistem yang Rapi & Terstruktur</h5>
+              <p>
+                Setiap sistem dibangun dengan struktur yang jelas, mudah
+                dipelihara, dan siap dikembangkan sesuai kebutuhan jangka
+                panjang.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100">
+              <h5>Analisis Masalah yang Tepat</h5>
+              <p>
+                Terbiasa menganalisis permasalahan sistem secara menyeluruh
+                untuk menghasilkan solusi yang efektif dan efisien.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100">
+              <h5>Siap Digunakan di Lingkungan Nyata</h5>
+              <p>
+                Fokus pada implementasi yang benar-benar dapat digunakan, bukan
+                sekadar konsep atau tugas latihan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILL -->
+    <section class="section" id="skill">
+      <div class="container">
+        <h2 class="mb-5" data-aos="fade-up">Kompetensi Teknis</h2>
+
+        <div class="row g-4">
+          <div class="col-md-3" data-aos="fade-up">
+            <div class="card h-100 text-center">
+              <strong class="jskil">Frontend</strong>
+              <p>React.js, TypeScript, Tailwind CSS, </p>
+            </div>
+          </div>
+
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 text-center">
+              <strong class="jskil">Backend</strong>
+              <p>Node.js, Express.js, Mysql2</p>
+            </div>
+          </div>
+
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="card h-100 text-center">
+              <strong class="jskil">Software</strong>
+              <p>Instalasi OS, driver, troubleshooting software</p>
+            </div>
+          </div>
+
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 text-center">
+              <strong class="jskil">Hardware</strong>
+              <p>Service PC & laptop, analisis kerusakan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT -->
+    <section class="section soft" id="Proyek">
+      <div class="container">
+        <h2 class="mb-5" data-aos="fade-up">Proyek yang Pernah Dikerjakan</h2>
+
+        <div class="row g-4" id="proyek-grid">
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="card has-proof">
+              <div class="proj-thumb" data-lightbox>
+                <img
+                  src="tampilan_pos.png"
+                  alt=""
+               
+                />          
+              </div>
+              <h6>Point of Sale (POS) Peralatan Rumah Tangga</h6>
+              <p>
+                Point of Sale (POS) dengan fitur login Owner dan Kasir, manajemen produk, transaksi, stok, dan laporan penjualan.
+                <span class="badge bg-primary">React.js</span>
+                <span class="badge bg-success">Tailwind CSS</span>
+                <span class="badge bg-secondary">Bun</span>
+                <span class="badge bg-dark">Express.js</span>
+              </p>
+              <div class="proj-links">
+                <a href="#" class="disabled"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>
+                <a href="https://github.com/bayunc2212-max/POS_Peralatan-Rumah-Tangga_UI.git" ><i class="bi bi-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card has-proof">
+              <div class="proj-thumb" data-lightbox>
+                <img
+                  src="boking_poto.png"
+                  alt=""
+                
+                />
+                <div class="proj-thumb-fallback">
+                  <i class="bi bi-image"></i>
+                </div>
+              </div>
+              <h6>Frontend System Booking Photography</h6>
+              <p>
+                Desain UI website Booking Photography yang menampilkan halaman beranda, daftar layanan, portofolio, dan formulir pemesanan dengan responsif.
+                 <span class="badge bg-primary">React.js</span>
+                <span class="badge bg-success">Tailwind CSS</span>
+              </p>
+              <div class="proj-links">
+                <a href="#" class="disabled"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>
+                <a href="https://github.com/bayunc2212-max/Frontend_System-booking-foto.git" class=""><i class="bi bi-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card has-proof">
+              <div class="proj-thumb" data-lightbox>
+                <img
+                  src="service_komputer.jpg"
+                  alt="Screenshot IT Troubleshooting"
+                  
+                />
+            
+              </div>
+              <h6>Hardware Troubleshooting</h6>
+              <p>
+                Penanganan error sistem, driver VGA, dan optimasi performa
+                komputer.
+              </p>
+              <div class="proj-links">
+                <a href="#" class="disabled"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>
+                <a href="#" class="disabled"><i class="bi bi-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tambahan: kartu untuk menambahkan proyek baru -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card add-project-card h-100" id="addProjectCard">
+              <div>
+                <span class="ap-eyebrow">// Tambah Modul</span>
+                <p class="ap-desc mt-1">
+                  Punya proyek baru? Masukkan di sini — kartunya akan otomatis
+                  tampil di grid seperti proyek lainnya.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm align-self-start"
+                id="apToggleBtn"
+              >
+                + Tambah Proyek
+              </button>
+
+              <form class="ap-form" id="apForm">
+                <input
+                  type="text"
+                  id="apTitle"
+                  placeholder="Nama proyek"
+                  required
+                />
+                <textarea
+                  id="apDesc"
+                  placeholder="Deskripsi singkat proyek"
+                  required
+                ></textarea>
+                <input
+                  type="text"
+                  id="apTags"
+                  placeholder="Tag, pisahkan koma (mis: PHP, MySQL, CRUD)"
+                />
+                <input
+                  type="url"
+                  id="apImg"
+                  placeholder="URL screenshot (opsional)"
+                />
+                <input
+                  type="url"
+                  id="apDemo"
+                  placeholder="Link Live Demo (opsional)"
+                />
+                <input
+                  type="url"
+                  id="apRepo"
+                  placeholder="Link Source Code / GitHub (opsional)"
+                />
+                <div class="ap-actions">
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Simpan Proyek
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-sm"
+                    id="apCancelBtn"
+                  >
+                    Batal
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- sertifikat -->
+    <section class="section" id="sertifikat">
+      <div class="container">
+        <h2 class="mb-5" data-aos="fade-up">Sertifikat & Pelatihan</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="card">
+              <h6>Pelatihan Web Program</h6>
+              <p> Membangun Webiste Sederhana Menggunakan HTML, CSS & Bootstrap</p>
+              <button
+                class="btn btn-outline-primary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#web"
+              >
+                Lihat Sertifikat
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="card">
+              <h6>Pelatihan Web Program Advance</h6>
+              <p>Pengembangan Aplikasi Web Menggunakan React.js, TypeScript, Tailwind CSS, Node.js, dan Express.js</p>
+              <button
+                class="btn btn-outline-primary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#it"
+              >
+                Lihat Sertifikat
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal fade" id="web" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-muted">Sertifikat Web Program</h5>
+            <button
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img
+              src="Sertifikat Web Program_Bayu.jpeg"
+              class="img-fluid rounded"
+            />
+          </div>
+          <a
+            href="Sertifikat Web Program_Bayu.jpeg"
+            download
+            class="btn btn-primary mt-3"
+            target="_blank"
+          >
+            Download Sertifikat
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="it" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-muted">
+              Sertifikat Web Program Advance
+            </h5>
+            <button
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img
+              src="sertifiakat_web.jpg"
+              class="img-fluid rounded"
+            />
+          </div>
+           <a
+            href="sertifikat_web_program_advance.pdf"
+            download
+            class="btn btn-primary mt-3"
+            target="_blank"
+          >
+            Download Sertifikat
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer py-5" id="kontak">
+      <div class="container text-center">
+        <h5 class="footer-name mb-2">Bayu Kharisma Ramadhan</h5>
+
+        <p class="footer-role mb-4">
+          Web Developer & Technical Support Engineer
+        </p>
+
+        <div class="footer-contact mb-4">
+          <p class="mb-2">
+            <i class="bi bi-envelope-at me-2"></i>
+            <a href="mailto:bayunc2212@gmail.com"> bayunc2212@gmail.com </a>
+          </p>
+
+          <p class="mb-2">
+            <i class="bi bi-github me-2"></i>
+            <a href="https://github.com/bayunc2212-max" target="_blank">
+              github.com/bayunc2212-max
+            </a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-whatsapp me-2"></i>
+            <a href="https://wa.me/6285814105499" target="_blank">
+              0858-1410-5499
+            </a>
+          </p>
+        </div>
+
+        <small class="footer-copy">
+          © 2025 Bayu Kharisma Ramadhan — All Rights Reserved.
+        </small>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 700, once: true });
+
+      const links = document.querySelectorAll("#navmenu a");
+      const sections = document.querySelectorAll("section[id]");
+      const footer = document.querySelector("footer[id]");
+
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY + window.innerHeight * 0.5;
+        const docHeight = document.documentElement.scrollHeight;
+        const winHeight = window.innerHeight;
+
+        // NORMAL SECTION
+        sections.forEach((section) => {
+          const id = section.getAttribute("id");
+          const navLink = document.querySelector(`#navmenu a[href="#${id}"]`);
+
+          if (
+            section.offsetTop <= scrollPos &&
+            section.offsetTop + section.offsetHeight > scrollPos
+          ) {
+            links.forEach((l) => l.classList.remove("active"));
+            if (navLink) navLink.classList.add("active");
+          }
+        });
+
+        // FOOTER (CONTACT) 
+        if (window.scrollY + winHeight >= docHeight - 5) {
+          links.forEach((l) => l.classList.remove("active"));
+          const contactLink = document.querySelector(
+            '#navmenu a[href="#kontak"]'
+          );
+          if (contactLink) contactLink.classList.add("active");
+        }
+      });
+    </script>
+
+    <script>
+      (function () {
+        const toggleBtn = document.getElementById("apToggleBtn");
+        const cancelBtn = document.getElementById("apCancelBtn");
+        const form = document.getElementById("apForm");
+        const grid = document.getElementById("proyek-grid");
+        const addCardCol = document.getElementById("addProjectCard").closest(".col-md-4");
+
+        toggleBtn.addEventListener("click", () => {
+          form.classList.add("open");
+          toggleBtn.style.display = "none";
+        });
+
+        cancelBtn.addEventListener("click", () => {
+          form.reset();
+          form.classList.remove("open");
+          toggleBtn.style.display = "inline-block";
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const title = document.getElementById("apTitle").value.trim();
+          const desc = document.getElementById("apDesc").value.trim();
+          const tagsRaw = document.getElementById("apTags").value.trim();
+          const imgUrl = document.getElementById("apImg").value.trim();
+          const demoUrl = document.getElementById("apDemo").value.trim();
+          const repoUrl = document.getElementById("apRepo").value.trim();
+          if (!title || !desc) return;
+
+          const tags = tagsRaw
+            ? tagsRaw.split(",").map((t) => t.trim()).filter(Boolean)
+            : [];
+
+          const badgeClasses = ["bg-primary", "bg-secondary", "bg-dark"];
+          const badgesHtml = tags
+            .map(
+              (t, i) =>
+                `<span class="badge ${badgeClasses[i % badgeClasses.length]}">${t}</span>`
+            )
+            .join(" ");
+
+          const thumbHtml = imgUrl
+            ? `<div class="proj-thumb" data-lightbox>
+                 <img src="${imgUrl}" alt="Screenshot ${title}" loading="lazy" onerror="this.parentElement.classList.add('empty')" />
+                 <div class="proj-thumb-fallback"><i class="bi bi-image"></i><span>Gambar tidak bisa dimuat</span></div>
+               </div>`
+            : `<div class="proj-thumb empty">
+                 <div class="proj-thumb-fallback"><i class="bi bi-image"></i><span>Belum ada screenshot</span></div>
+               </div>`;
+
+          const demoLinkHtml = demoUrl
+            ? `<a href="${demoUrl}" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>`
+            : `<a href="#" class="disabled"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>`;
+          const repoLinkHtml = repoUrl
+            ? `<a href="${repoUrl}" target="_blank"><i class="bi bi-github"></i> Source Code</a>`
+            : `<a href="#" class="disabled"><i class="bi bi-github"></i> Source Code</a>`;
+
+          const col = document.createElement("div");
+          col.className = "col-md-4";
+          col.innerHTML = `
+            <div class="card has-proof proj-card-new">
+              ${thumbHtml}
+              <h6>${title}</h6>
+              <p>${desc} ${badgesHtml ? "<br>" + badgesHtml : ""}</p>
+              <div class="proj-links">${demoLinkHtml}${repoLinkHtml}</div>
+              <button type="button" class="proj-remove">Hapus proyek ini</button>
+            </div>
+          `;
+
+          col.querySelector(".proj-remove").addEventListener("click", () => {
+            col.remove();
+          });
+
+          grid.insertBefore(col, addCardCol);
+
+          form.reset();
+          form.classList.remove("open");
+          toggleBtn.style.display = "inline-block";
+        });
+      })();
+    </script>
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
+      <button type="button" class="lightbox-close" id="lightboxClose">Tutup ✕</button>
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+    <script>
+      (function () {
+        const overlay = document.getElementById("lightboxOverlay");
+        const overlayImg = document.getElementById("lightboxImg");
+        const closeBtn = document.getElementById("lightboxClose");
+
+        document.addEventListener("click", (e) => {
+          const thumb = e.target.closest(".proj-thumb:not(.empty)");
+          if (!thumb) return;
+          const img = thumb.querySelector("img");
+          if (!img) return;
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add("open");
+        });
+
+        function closeLightbox() {
+          overlay.classList.remove("open");
+          overlayImg.src = "";
+        }
+
+        overlay.addEventListener("click", closeLightbox);
+        closeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          closeLightbox();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeLightbox();
+        });
+      })();
+    </script>
+  </body>
+</html>
